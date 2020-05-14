@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">SIH2020_ABHUYDAY</string>
+    <string name="login_with_google">LOGIN WITH GOOGLE</string>
 </resources>
