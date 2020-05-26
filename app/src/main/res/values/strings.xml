@@ -18,4 +18,6 @@
     <string name="skip_btn">Skip</string>
 
 
+    <string name="login_with_google">LOGIN WITH GOOGLE</string>
+    <string name="GET_DATA">https://fjiz6enxh4.execute-api.ap-south-1.amazonaws.com/prod/SIH_BASIC</string>
 </resources>
