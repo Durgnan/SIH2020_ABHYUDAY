@@ -45,7 +45,7 @@ public class OnBoardActivity extends AppCompatActivity {
     }
 
     public void skip(View view) {
-        startActivity(new Intent(this, MainActivity.class));
+        startActivity(new Intent(this, ActivityLogin.class));
         finish();
     }
 

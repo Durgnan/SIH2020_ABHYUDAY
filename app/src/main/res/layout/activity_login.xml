@@ -36,5 +36,5 @@
         android:text="@string/login_with_google"
         android:background="@drawable/round_bg"
         android:drawableStart="@drawable/ic_google_logo"
-        android:drawableLeft="@drawable/ic_google_logo"/>
+        />
 </RelativeLayout>

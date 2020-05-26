@@ -1,14 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<<<<<<< HEAD
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-=======
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
->>>>>>> 799b6ec8335d99646c91de3d2ff6809d6b23ada0
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-<<<<<<< HEAD
     tools:context=".SplashScreenActivity"
     android:orientation="vertical"
     >
@@ -46,8 +41,3 @@
     </RelativeLayout>
 
 </LinearLayout>
-=======
-    tools:context=".SplashScreenActivity">
-
-</androidx.constraintlayout.widget.ConstraintLayout>
->>>>>>> 799b6ec8335d99646c91de3d2ff6809d6b23ada0
