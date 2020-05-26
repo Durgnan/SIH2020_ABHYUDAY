@@ -3,6 +3,7 @@ package com.sih2020.abhyuday;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.WindowManager;
@@ -13,6 +14,8 @@ import android.widget.TextView;
 
 public class SplashScreenActivity extends AppCompatActivity {
     Animation topAnimation,bottomAnimation;
+    SharedPreferences onBordingScreen;
+
 
     private static int SPLASH_SCREEN_TIME_OUT=3000;
     //After completion of 2000 ms, the next activity will get started.
@@ -32,23 +35,29 @@ public class SplashScreenActivity extends AppCompatActivity {
         image.setAnimation(topAnimation);
         info.setAnimation(bottomAnimation);
 
-
-//        Animation aniFade = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.splash_screen_fade);
-//
-//        img.startAnimation(aniFade);
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent i=new Intent(SplashScreenActivity.this,
-                        OnBoardActivity.class);
-                //Intent is used to switch from one activity to another.
+                onBordingScreen=getSharedPreferences("onBoardingScreen",MODE_PRIVATE);
+                boolean isFirstTime=onBordingScreen.getBoolean("firstTime",true);
+                if(isFirstTime)
+                {
+                    SharedPreferences.Editor editor=onBordingScreen.edit();
+                    editor.putBoolean("firstTime",false);
+                    editor.commit();
+                    Intent i=new Intent(SplashScreenActivity.this, OnBoardActivity.class);
+                    startActivity(i);
+                    finish();
 
-                startActivity(i);
-                //invoke the SecondActivity.
+                }
+                else {
+                    Intent i=new Intent(SplashScreenActivity.this, MainActivity.class);
+                    startActivity(i);
+                    finish();
 
-                overridePendingTransition(R.anim.slide_to_left, R.anim.slide_to_right);
-                finish();
-                //the current activity will get finished.
+                }
+
+
             }
         }, SPLASH_SCREEN_TIME_OUT);
     }
