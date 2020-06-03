@@ -7,7 +7,7 @@
     <ImageView
         android:id="@+id/slider_image"
         android:layout_width="0dp"
-        android:layout_height="400dp"
+        android:layout_height="300dp"
         android:layout_marginTop="32dp"
         android:padding="20dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -26,7 +26,8 @@
         android:fontFamily="@font/alegreya_sans_sc"
         android:gravity="center"
         android:text="TextView"
-        android:textSize="36sp"
+        android:textSize="16sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.471"
         app:layout_constraintStart_toStartOf="parent"
