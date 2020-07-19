@@ -21,6 +21,23 @@
     <string name="GET_DATA">https://fjiz6enxh4.execute-api.ap-south-1.amazonaws.com/prod/SIH_BASIC</string>
 
 
+    <!--  Main Activity  -->
+    <string name="headding">Med App</string>
+    <string name="profile">Update\nProfile</string>
+    <string name="emergencyContact">Emergency\nContact</string>
+    <string name="medicalHistory">Medical\nHistory</string>
+    <string name="emergency">Emergency\nAlert</string>
+
+    <string name="updates">Updates\non covid 19</string>
+    <string name="updatesDesc">Get the latest updates on Covid-19 pandemic</string>
+
+    <string name="youralerts">Your Alerts</string>
+    <string name="veiwRecentAlerts">Veiw your recent Alerts</string>
+
+
+
+
+
     <string name="login_with_google">LOGIN WITH GOOGLE</string>
 
 
