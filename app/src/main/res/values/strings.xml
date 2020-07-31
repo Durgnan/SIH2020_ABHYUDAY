@@ -18,7 +18,7 @@
     <string name="skip_btn">Skip</string>
 
     <!-- backend api-->
-<!--    <string name="GET_DATA">https://fjiz6enxh4.execute-api.ap-south-1.amazonaws.com/prod/SIH_BASIC</string>-->
+    <!--    <string name="GET_DATA">https://fjiz6enxh4.execute-api.ap-south-1.amazonaws.com/prod/SIH_BASIC</string>-->
 
     <string name="GET_DATA">https://sa0dagwo06.execute-api.ap-south-1.amazonaws.com/prod/SIH_NEW_API_2</string>
     <string name="API_KEY">QiUZ0QUGAn7cYqtelB3bv1h61biiFGaRY0AAbG10</string>
@@ -37,18 +37,14 @@
     <string name="veiwRecentAlerts">Veiw your recent Alerts</string>
 
 
-
-
-
     <string name="login_with_google">LOGIN WITH GOOGLE</string>
-
-
 
 
     <!-- User profile update   -->
     <string name="enter_age">Age</string>
     <string name="enter_weight">Weight</string>
     <string name="UserProfile1">USER\nDETAILS</string>
+    <string name="title_activity_tracker_maps">Map</string>
 
 
 </resources>
