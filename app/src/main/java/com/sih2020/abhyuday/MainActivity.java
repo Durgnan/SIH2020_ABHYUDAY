@@ -1,11 +1,21 @@
 package com.sih2020.abhyuday;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.Manifest;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.ContextThemeWrapper;
 import android.view.WindowManager;
 import android.widget.LinearLayout;
 import android.widget.Toast;
@@ -31,6 +41,29 @@ public class MainActivity extends AppCompatActivity {
     RecyclerView featuredRecycler;
     RecyclerView.Adapter adapter;
     ArrayList<FeaturedHelperClass> featuredNews;
+    BroadcastReceiver broadcastReceiver;
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if(broadcastReceiver==null){
+            broadcastReceiver=new BroadcastReceiver() {
+                @Override
+                public void onReceive(Context context, Intent intent) {
+                    Toast.makeText(context, "\n"+intent.getExtras().get("coordinates"), Toast.LENGTH_SHORT).show();
+                }
+            };
+        }
+        registerReceiver(broadcastReceiver,new IntentFilter("location_updates"));
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if(broadcastReceiver!=null){
+            unregisterReceiver(broadcastReceiver);
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +73,35 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         featuredRecycler=findViewById(R.id.featured_recycler);
         featuredRecycler();
+        if(!runtime_permission()){
+            start_my_service();
+        }
 
+    }
+
+    private void start_my_service() {
+        Intent i=new Intent(getApplicationContext(),GPS_Service.class);
+        startService(i);
+    }
+
+    private boolean runtime_permission() {
+        if(Build.VERSION.SDK_INT>=23 && ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)!= PackageManager.PERMISSION_GRANTED && ContextCompat.checkSelfPermission(this,Manifest.permission.ACCESS_COARSE_LOCATION)!=PackageManager.PERMISSION_GRANTED){
+            requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION,Manifest.permission.ACCESS_COARSE_LOCATION},100);
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if(requestCode==100){
+            if(grantResults[0]==PackageManager.PERMISSION_GRANTED && grantResults[1]==PackageManager.PERMISSION_GRANTED){
+                start_my_service();
+            }else{
+                runtime_permission();
+            }
+        }
     }
 
     private void featuredRecycler() {
