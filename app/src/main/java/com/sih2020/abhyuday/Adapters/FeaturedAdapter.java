@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.sih2020.abhyuday.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -32,7 +33,8 @@ public class FeaturedAdapter extends RecyclerView.Adapter<FeaturedAdapter.Featur
     public void onBindViewHolder(@NonNull FeatureViewHolder holder, int position) {
 
         FeaturedHelperClass featuredHelperClass=featuredHelperClasses.get(position);
-        holder.image.setImageResource(featuredHelperClass.getImage());
+        //holder.image.setImageResource(featuredHelperClass.getImage());
+        Picasso.get().load(featuredHelperClass.getImage()).into(holder.image);
         holder.title.setText(featuredHelperClass.getTitle());
         holder.desc.setText(featuredHelperClass.getDescription());
 

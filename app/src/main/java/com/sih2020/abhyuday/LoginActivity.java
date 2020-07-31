@@ -117,14 +117,25 @@ public class LoginActivity extends AppCompatActivity {
                             System.out.println("Check point 1");
                             //final String phone = user.getPhoneNumber();
                             String login_url = getResources().getString(R.string.GET_DATA);
+                            JSONObject jsonObject1=new JSONObject();
+                            JSONObject jsonObject2=new JSONObject();
+                            try {
+                                jsonObject1.put("API_KEY",getResources().getString(R.string.API_KEY));
+                                jsonObject2.put("email",email);
+                                jsonObject2.put("name",name);
+                                jsonObject2.put("authId",uid);
+
+
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+
                             JSONObject jsonObject= new JSONObject();
                             try {
-                                jsonObject.put("MODE","REGISTER");
-                                jsonObject.put("USER_TYPE","NORMAL");
-                                jsonObject.put("EMAIL",email);
-                                jsonObject.put("NAME",name);
-                                jsonObject.put("PASSWORD","");
-                                //jsonObject.put("UID",uid);
+                                jsonObject.put("MODE","USER_REGISTER");
+                                jsonObject.put("headers",jsonObject1);
+                                jsonObject.put("payload",jsonObject2);
+                                Log.e("DEBUG",jsonObject.toString());
                                 System.out.println("Check point 2");
                             } catch (JSONException e) {
                                 e.printStackTrace();
@@ -136,6 +147,9 @@ public class LoginActivity extends AppCompatActivity {
                             JsonObjectRequest objectRequest= new JsonObjectRequest(Request.Method.POST, login_url, jsonObject, new Response.Listener<JSONObject>() {
                                 @Override
                                 public void onResponse(JSONObject response) {
+                                    System.out.println("Check point 3.00");
+                                    Log.e("RESPONSE CODE",response.toString());
+
                                     try {
                                         Log.e("RESPONSE",response.toString());
 

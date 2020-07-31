@@ -26,6 +26,13 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
+
+import java.util.*;
+import javax.mail.*;
+import javax.mail.internet.*;
+import javax.activation.*;
+
+
 public class MainActivity extends AppCompatActivity {
 
     RecyclerView featuredRecycler;
@@ -36,7 +43,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
         setContentView(R.layout.activity_main);
         featuredRecycler=findViewById(R.id.featured_recycler);
         featuredRecycler();
@@ -78,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
                                 String flag=jsonObject.getJSONObject("countryInfo").getString("flag");
                                 Log.e("DEBUG",flag);
 
-                                featuredNews.add(new FeaturedHelperClass(R.drawable.global_logo,country+" Count","The "+country+" count of positive cases exceeds "+number));
+                                featuredNews.add(new FeaturedHelperClass(flag,country+" Count","In "+country+" count of positive cases exceeds "+number));
 
                             }
 

@@ -1,16 +1,16 @@
 package com.sih2020.abhyuday.Adapters;
 
 public class FeaturedHelperClass {
-    int image;
+    String image;
     String title,description;
 
-    public FeaturedHelperClass(int image, String title, String description) {
+    public FeaturedHelperClass(String image, String title, String description) {
         this.image = image;
         this.title = title;
         this.description = description;
     }
 
-    public int getImage() {
+    public String getImage() {
         return image;
     }
 
