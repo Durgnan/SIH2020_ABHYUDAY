@@ -35,17 +35,19 @@
 
         <activity
             android:name=".Tracking.TrackerMapsActivity"
-            android:label="@string/title_activity_tracker_maps"></activity>
-        <activity android:name=".User.UserHomeScreenActivity" />
-        <activity android:name=".LoginActivity" />
-        <activity
-            android:name=".Ambulance.SignInActivity"
-            android:theme="@style/AmbulanceTheme">
+            android:label="@string/title_activity_tracker_maps">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".User.UserHomeScreenActivity" />
+        <activity android:name=".LoginActivity" />
+        <activity
+            android:name=".Ambulance.SignInActivity"
+            android:theme="@style/AmbulanceTheme">
+
         </activity>
         <activity
             android:name=".Ambulance.RegisterActivity"
