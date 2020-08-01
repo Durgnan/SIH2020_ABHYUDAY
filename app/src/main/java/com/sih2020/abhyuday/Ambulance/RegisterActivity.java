@@ -12,9 +12,19 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.android.material.button.MaterialButton;
 import com.sih2020.abhyuday.R;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -32,7 +42,7 @@ public class RegisterActivity extends AppCompatActivity {
     public static final int LICENCE_PICK_IMAGE = 99;
     public static final int LICENCE_TAKE_IMAGE = 100;
     public static final int CAMERA_PERMISSION = 101;
-    EditText etFullName, etEmail, etPassword, etPhoneNo, etAddress, etAmbulancePlateNo;
+    EditText etFullName, etEmail, etPassword, etPhoneNo, etAddress, etAmbulancePlateNo, etLicenseNo;
     TextView driverImg, licenceImg;
     MaterialButton btnRegister;
 
@@ -49,6 +59,7 @@ public class RegisterActivity extends AppCompatActivity {
         etAddress = findViewById(R.id.et_address);
         etAmbulancePlateNo = findViewById(R.id.et_ambulance_plate_no);
         btnRegister = findViewById(R.id.btn_register);
+        etLicenseNo = findViewById(R.id.et_driver_license_no);
 
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, CAMERA_PERMISSION);
@@ -63,6 +74,60 @@ public class RegisterActivity extends AppCompatActivity {
         });
 
         btnRegister.setOnClickListener(v -> {
+            String fullName = etFullName.getText().toString().trim();
+            String email = etEmail.getText().toString().trim();
+            String password = etPassword.getText().toString().trim();
+            String phone = etPhoneNo.getText().toString().trim();
+            String address = etAddress.getText().toString().trim();
+            String ambulancePlateNo = etAmbulancePlateNo.getText().toString().trim();
+            String licenseNo = etLicenseNo.getText().toString().trim();
+
+            String url = getResources().getString(R.string.GET_DATA);
+            JSONObject jsonObject1 = new JSONObject();
+            JSONObject jsonObject2 = new JSONObject();
+            JSONObject jsonObject = new JSONObject();
+            try {
+                jsonObject1.put("API_KEY", getResources().getString(R.string.API_KEY));
+                jsonObject2.put("VREGNO", ambulancePlateNo);
+                jsonObject2.put("DLNO", licenseNo);
+                jsonObject2.put("DNAME", fullName);
+                jsonObject2.put("DPHONE", phone);
+                jsonObject2.put("DADD", address);
+                jsonObject2.put("DIMG", "");
+                jsonObject2.put("DLIMG", "");
+                jsonObject2.put("EMAIL", email);
+                jsonObject2.put("AMBPASS", password);
+
+                jsonObject.put("MODE", "ADD_AMBULANCE");
+                jsonObject.put("headers", jsonObject1);
+                jsonObject.put("payload", jsonObject2);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+            JsonObjectRequest objectRequest = new JsonObjectRequest(Request.Method.POST, url, jsonObject, new Response.Listener<JSONObject>() {
+                @Override
+                public void onResponse(JSONObject response) {
+                    try {
+                        if (response.getString("message").equals("SUCCESS")) {
+                            Toast.makeText(getApplicationContext(), "Registration Successful!", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(RegisterActivity.this, SignInActivity.class));
+                        } else if (response.getString("message").equals("DUPLICATE ENTRY")) {
+                            Toast.makeText(getApplicationContext(), "Ambulance Already Registered!", Toast.LENGTH_LONG).show();
+                        } else {
+                            Toast.makeText(getApplicationContext(), "Failed!! Contact Administrator!", Toast.LENGTH_LONG).show();
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                }
+            }
+            );
+            requestQueue.add(objectRequest);
 
         });
     }
