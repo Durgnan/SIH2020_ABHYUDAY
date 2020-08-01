@@ -4,10 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.view.WindowManager;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -38,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
     RecyclerView featuredRecycler;
     RecyclerView.Adapter adapter;
     ArrayList<FeaturedHelperClass> featuredNews;
+    RelativeLayout generalInfo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +50,15 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         featuredRecycler=findViewById(R.id.featured_recycler);
         featuredRecycler();
+        generalInfo=findViewById(R.id.generalInfo);
+        generalInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i=new Intent(MainActivity.this, UserProfileActivity.class);
+                startActivity(i);
+                finish();
+            }
+        });
 
     }
 
@@ -84,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
                                 String flag=jsonObject.getJSONObject("countryInfo").getString("flag");
                                 Log.e("DEBUG",flag);
 
-                                featuredNews.add(new FeaturedHelperClass(flag,country+" Count","In "+country+" count of positive cases exceeds "+number));
+                                featuredNews.add(new FeaturedHelperClass(flag,country+"","In "+country+" count of positive cases exceeds "+number));
 
                             }
 

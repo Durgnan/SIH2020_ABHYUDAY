@@ -153,7 +153,7 @@ public class LoginActivity extends AppCompatActivity {
                                     try {
                                         Log.e("RESPONSE",response.toString());
 
-                                        if(response.getString("MESSAGE").equals("SUCCESS"))
+                                        if(response.getString("message").equals("SUCCESS"))
                                         {
                                             System.out.println("Check point 3.1");
                                             //editor.putString("MODE","REGISTER");

@@ -59,6 +59,7 @@
                     android:orientation="vertical"
                     >
                     <RelativeLayout
+                        android:id="@+id/generalInfo"
                         android:layout_width="60dp"
                         android:layout_height="60dp"
                         android:background="@color/card1"

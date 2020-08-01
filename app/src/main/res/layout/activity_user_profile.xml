@@ -19,24 +19,92 @@
             android:layout_height="wrap_content"
             android:id="@+id/BackArrow"
             android:src="@drawable/arrow_back"
-            android:padding="5dp"/>
+            android:padding="5dp"
+            android:transitionName="transition_back"/>
 
         <TextView
             android:layout_width="wrap_content"
+            android:id="@+id/tvUserDetails"
             android:layout_height="wrap_content"
             android:fontFamily="@font/muli_black"
             android:text="@string/UserProfile1"
             android:textColor="@color/colorAccent"
             android:textSize="40dp"
-            android:layout_marginTop="20dp"/>
+            android:layout_marginTop="30dp"
+            android:transitionName="transition_user_details"/>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="40dp">
 
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/enter_age"
+                android:layout_marginTop="20dp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:textColorHint="@color/colorAccent"
+                app:boxStrokeWidth="2dp"
+                app:boxStrokeColor="@color/colorAccent"
+                >
 
+                <com.google.android.material.textfield.TextInputEditText
+                    android:drawableStart="@drawable/enter_age"
+                    android:id="@+id/etAge"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:inputType="number"/>
 
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:hint="@string/enter_weight"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:textColorHint="@color/colorAccent"
+                app:boxStrokeWidth="2dp"
+                app:boxStrokeColor="@color/colorAccent"
+                >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:drawableStart="@drawable/enter_age"
+                    android:id="@+id/etWeight"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:inputType="number"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnNext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/next"
+            android:background="@color/colorAccent"
+            android:textColor="@color/colorPrimary"
+            android:layout_marginTop="40dp"
+            android:elevation="5dp"
+            android:onClick="callNextUserDetailsScreen"
+            />
+
+        <Button
+            android:id="@+id/btnSubmit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/submit"
+            android:background="#FFFFFF"
+            android:textColor="@color/colorAccent"
+            android:layout_marginTop="40dp"
+            android:elevation="5dp"
+            android:fontFamily="@font/muli"
+            android:transitionName="transition_submit"
+            />
     </LinearLayout>
-
-
-
-
 
 </ScrollView>

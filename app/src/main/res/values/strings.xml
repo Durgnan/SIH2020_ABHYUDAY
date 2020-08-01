@@ -25,7 +25,7 @@
 
     <!--  Main Activity  -->
     <string name="headding">Med App</string>
-    <string name="profile">Update\nProfile</string>
+    <string name="profile">Genral\nInfo</string>
     <string name="emergencyContact">Emergency\nContact</string>
     <string name="medicalHistory">Medical\nHistory</string>
     <string name="emergency">Emergency\nAlert</string>
@@ -49,6 +49,12 @@
     <string name="enter_age">Age</string>
     <string name="enter_weight">Weight</string>
     <string name="UserProfile1">USER\nDETAILS</string>
+
+    <!--    Adi edits-->
+    <string name="enter_sex">Sex</string>
+    <string name="next">NEXT</string>
+    <string name="submit">SUBMIT</string>
+    <string name="enter_blood_group">Blood Group</string>
 
 
 </resources>

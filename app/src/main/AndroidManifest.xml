@@ -25,6 +25,9 @@
         <activity android:name=".MainActivity" >
         </activity>
 
+        <activity android:name=".UserProfileActivity_2"/>
+        <activity android:name=".UserProfileActivity"/>
+
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="30dp"
+    tools:context=".UserProfileActivity_2">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/BackArrow1"
+            android:src="@drawable/arrow_back"
+            android:padding="5dp"
+            android:transitionName="transition_back"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:id="@+id/tvUserDetails"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/muli_black"
+            android:text="@string/UserProfile1"
+            android:textColor="@color/colorAccent"
+            android:textSize="40dp"
+            android:layout_marginTop="30dp"
+            android:transitionName="transition_user_details"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="30dp">
+
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="Choose Gender"
+               android:fontFamily="@font/muli_black"
+               android:textColor="@color/colorAccent"
+               android:textSize="18sp"/>
+
+            <RadioGroup
+                android:id="@+id/rgGender"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp">
+
+            <RadioButton
+                android:id="@+id/rbMale"
+                android:layout_margin="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="Male" />
+
+            <RadioButton
+                android:id="@+id/rbFemale"
+                android:layout_width="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_height="wrap_content"
+                android:text="Female" />
+
+            <RadioButton
+                android:id="@+id/rbOther"
+                android:layout_margin="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Others" />
+
+            </RadioGroup>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Choose Blood Group"
+                android:fontFamily="@font/muli_black"
+                android:layout_marginTop="30dp"
+                android:textColor="@color/colorAccent"
+                android:textSize="18sp"/>
+
+            <RadioGroup
+                android:id="@+id/rgBloodGroup"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
+
+
+                <RadioButton
+                    android:id="@+id/rbA"
+                    android:checked="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:text="A+ve" />
+
+                <RadioButton
+                    android:id="@+id/rbA1"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:text="A-ve"  />
+
+                <RadioButton
+                    android:id="@+id/rbB"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:text="B+ve" />
+
+                    <RadioButton
+                        android:id="@+id/rbB1"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="B-ve"
+                        />
+
+                    <RadioButton
+                    android:id="@+id/rbAB"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="AB+ve" />
+
+                <RadioButton
+                    android:id="@+id/rbAB1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="5dp"
+                    android:text="A-ve" />
+
+                <RadioButton
+                    android:id="@+id/rbO"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:text="O+ve" />
+
+                <RadioButton
+                    android:id="@+id/rbO1"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="O-ve"/>
+
+            </RadioGroup>
+
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnSubmit1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/submit"
+            android:background="#FFFFFF"
+            android:textColor="@color/colorAccent"
+            android:layout_marginTop="40dp"
+            android:elevation="5dp"
+            android:fontFamily="@font/muli"
+            android:transitionName="transition_submit"
+            />
+
+    </LinearLayout>
+
+</ScrollView>
