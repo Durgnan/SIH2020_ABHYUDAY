@@ -31,7 +31,7 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
     private RecyclerView recyclerView;
     private RecyclerView.LayoutManager layoutManager;
     private SwipeRefreshLayout swipeRefreshLayout;
-    private RecyclerView.Adapter adapter;
+    private AlertAdapter adapter;
 
     @Nullable
     @Override
@@ -78,6 +78,10 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
                         JSONArray jsonArray = response.getJSONArray("response");
                         adapter = new AlertAdapter(jsonArray);
                         recyclerView.setAdapter(adapter);
+                        adapter.setOnItemClickListener(position -> {
+                            jsonArray.remove(position);
+                            adapter.notifyItemRemoved(position);
+                        });
                         swipeRefreshLayout.setRefreshing(false);
                     }
                 } catch (JSONException e) {
